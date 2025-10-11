@@ -6,9 +6,9 @@
 <p align="center"><em>Der werbefreie Web-Musikplayer im Spotify-Look</em></p>
 
 <p align="center">
-  <a href="https://alexgamingstudio.github.io/neverwannagiveyouup.echoplay">🔗 Webseite öffnen</a> •
-  <a href="https://alexgamingstudio.github.io/neverwannagiveyouup.echoplay/impressum.html">📘 Impressum</a> •
-  <a href="https://alexgamingstudio.github.io/neverwannagiveyouup.echoplay/datenschutz.html">📒 Datenschutz</a>
+  <a href="https://alexgamingstudio.github.io/download.echoplay">🔗 Webseite öffnen</a> •
+  <a href="https://alexgamingstudio.github.io/download.echoplay/impressum.html">📘 Impressum</a> •
+  <a href="https://alexgamingstudio.github.io/download.echoplay/datenschutz.html">📒 Datenschutz</a>
 </p>
 
 ---
@@ -39,8 +39,8 @@ Es ist komplett kostenlos, funktioniert ohne Anmeldung und verzichtet bewusst au
 EchoPlay verfolgt **keine kommerziellen Zwecke**.  
 Alle Inhalte werden mit größter Sorgfalt ausgewählt. Wenn du der Meinung bist, dass etwas entfernt werden sollte, kontaktiere uns bitte.
 
-📘 [Impressum](https://alexgamingstudio.github.io/neverwannagiveyouup.echoplay/impressum.html)  
-📒 [Datenschutzerklärung](https://alexgamingstudio.github.io/neverwannagiveyouup.echoplay/datenschutz.html)
+📘 [Impressum](https://alexgamingstudio.github.io/download.echoplay/impressum.html)  
+📒 [Datenschutzerklärung](https://alexgamingstudio.github.io/download.echoplay/datenschutz.html)
 
 ---
 
