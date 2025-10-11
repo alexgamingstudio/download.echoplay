@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EchoPlay – Now Playing</title>
+  <title>EchoPlay – Download</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      background-color: #121212;
       font-family: "Helvetica Neue", sans-serif;
+      background-color: #121212;
       color: white;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
       align-items: center;
+      min-height: 100vh;
       padding: 20px;
     }
     header {
@@ -24,209 +22,76 @@
       max-width: 400px;
       background-color: #181818;
       padding: 15px 20px;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: bold;
       color: #1db954;
       box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-      user-select: none;
       border-radius: 6px;
       text-align: center;
       margin-bottom: 20px;
-      display: none; /* Initial verstecken */
     }
-    /* LOGIN */
-    #login-section {
+    main {
       width: 100%;
       max-width: 400px;
       background-color: #181818;
-      padding: 30px 20px;
       border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      padding: 30px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      user-select: none;
+      gap: 20px;
     }
-    #login-section h2 {
+    main img.logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 10px;
+    }
+    h1 {
+      font-size: 1.6rem;
       color: #1db954;
-      margin-bottom: 15px;
-      user-select: none;
+      text-align: center;
+      margin-bottom: 10px;
     }
-    #login-section input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: none;
-      background: #2a2a2a;
-      color: white;
-      font-size: 1rem;
+    p {
+      text-align: center;
+      line-height: 1.6;
+      color: #ccc;
     }
-    #login-section button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+    .download-btn {
+      display: block;
+      width: 220px;
+      padding: 15px 0;
       background-color: #1db954;
-      border: none;
       color: black;
+      text-align: center;
       font-weight: bold;
       font-size: 1.1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color 0.3s;
-    }
-    #login-section button:hover {
-      background-color: #1ed760;
-    }
-    #error-msg {
-      color: #ff5c5c;
-      margin-bottom: 10px;
-      min-height: 1.2em;
-      user-select: none;
-      text-align: center;
-    }
-    .player-container {
-      background-color: #181818;
-      padding: 20px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-      display: none; /* Initial verstecken */
-      flex-direction: column;
-      align-items: center;
-      user-select: none;
-      flex-grow: 1;
-    }
-    .cover-art {
-      width: 280px;
-      height: 280px;
-      background-image: url('rick-cover.jpg');
-      background-size: cover;
-      background-position: center;
       border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-      margin-bottom: 20px;
-      flex-shrink: 0;
-    }
-    .song-info {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .song-title {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .song-artist a {
-      font-size: 1rem;
-      color: #b3b3b3;
       text-decoration: none;
+      transition: background 0.3s;
     }
-    .song-artist a:hover {
-      color: #1db954;
-      text-decoration: underline;
-    }
-    .controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 25px;
-      margin-bottom: 20px;
-    }
-    .btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: white;
-      font-size: 20px;
-      transition: transform 0.2s, color 0.2s;
-      user-select: none;
-    }
-    .btn:hover {
-      transform: scale(1.15);
-    }
-    .btn.active {
-      color: #1db954;
-    }
-    .play-pause-btn {
-      width: 50px;
-      height: 50px;
-      background-color: #1db954;
-      color: black;
-      font-size: 26px;
-      font-weight: bold;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      transition: background-color 0.3s;
-      user-select: none;
-      padding: 0;
-      line-height: 0;
-    }
-    .play-pause-btn:hover {
+    .download-btn:hover {
       background-color: #1ed760;
-    }
-    .progress-container {
-      width: 100%;
-      max-width: 280px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      user-select: none;
-    }
-    .progress {
-      flex: 1;
-      height: 5px;
-      background: #535353;
-      border-radius: 2px;
-      position: relative;
-      cursor: pointer;
-    }
-    .progress-filled {
-      height: 100%;
-      background: #1db954;
-      width: 0%;
-      border-radius: 2px;
-      transition: width 0.1s linear;
-    }
-    .time {
-      font-size: 0.75rem;
-      color: #b3b3b3;
-      min-width: 35px;
-      text-align: center;
-    }
-    .volume {
-      margin-top: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      user-select: none;
-      color: #b3b3b3;
-    }
-    input[type="range"] {
-      width: 100px;
-      cursor: pointer;
-      background: transparent;
     }
     footer {
       margin-top: 30px;
       font-size: 0.8rem;
       color: #888;
-      max-width: 400px;
       text-align: center;
+      max-width: 400px;
       line-height: 1.4;
-      user-select: none;
     }
     footer a {
       color: #1db954;
       text-decoration: none;
+      margin: 0 5px;
     }
     footer a:hover {
       text-decoration: underline;
@@ -234,183 +99,31 @@
   </style>
 </head>
 <body>
-  <!-- LOGIN -->
-<section id="login-section" role="form" aria-label="Login Bereich">
-  <h2>EchoPlay Login</h2>
-  <div id="error-msg" aria-live="polite"></div>
-  <input type="text" id="username" placeholder="Benutzername" autocomplete="username" aria-required="true" />
-  <input type="password" id="password" placeholder="Passwort" autocomplete="current-password" aria-required="true" />
-  <button type="button" onclick="checkLogin()">Anmelden</button>
-</section>
   <header>EchoPlay</header>
 
-  <main class="player-container" role="main" aria-label="Musikplayer">
-    <div class="cover-art" aria-label="Album Cover"></div>
+  <main>
+    <img src="echoplay-icon.png" alt="EchoPlay Logo" class="logo" />
+    <h1>EchoPlay herunterladen</h1>
+    <p>Der einfach zu bedienende Player für Audio- und Video-Dateien. Kostenlos, werbefrei und minimalistisch.</p>
 
-    <div class="song-info">
-      <div class="song-title">Never Gonna Give You Up</div>
-      <div class="song-artist">
-  <div>
-    <strong>Artist:</strong>
-    <a href="https://rickastley.co.uk" target="_blank" rel="noopener noreferrer" title="Offizielle Webseite von Rick Astley">
-      Rick Astley
-    </a>
-  </div>
-  <div>
-    <strong>Uploader:</strong>
-    <span style="display: inline-flex; align-items: center;">
-      Alex Gaming Studios
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Twitter_Verified_Badge.svg/20px-Twitter_Verified_Badge.svg.png"
-           alt="Verifiziert" title="Verifiziert"
-           style="width: 16px; height: 16px; margin-left: 5px;" />
-    </span>
-  </div>
-</div>
-      </div>
-    </div>
+    <h2>Features:</h2>
+    <ul>
+      <li>Intuitive Bedienoberfläche</li>
+      <li>Unterstützt alle gängigen Audio- & Videoformate</li>
+      <li>Schneller Start & geringer Ressourcenverbrauch</li>
+      <li>Regelmäßige Updates</li>
+    </ul>
 
-    <div class="controls">
-      <button class="btn" id="repeatBtn" title="Wiederholen">⟳</button>
-      <button class="play-pause-btn" id="playPauseBtn" title="Abspielen" aria-pressed="false" aria-label="Abspielen">▶</button>
-    </div>
-
-    <div class="progress-container" aria-label="Wiedergabefortschritt" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-      <div class="time" id="currentTime">0:00</div>
-      <div class="progress" id="progressBarContainer" tabindex="0" aria-label="Zum Zeitpunkt springen">
-        <div class="progress-filled" id="progressBar"></div>
-      </div>
-      <div class="time" id="duration">0:00</div>
-    </div>
-
-    <div class="volume" title="Lautstärke">
-      <span aria-hidden="true">🔊</span>
-      <input type="range" min="0" max="1" step="0.01" id="volumeControl" aria-label="Lautstärkeregler" />
-    </div>
-
-    <audio id="audio" src="never-gonna-give-you-up.mp3" preload="metadata"></audio>
+    <a href="EchoPlay-Installer.exe" class="download-btn" download>Jetzt herunterladen</a>
   </main>
 
   <footer>
-    <p>© 2025 EchoPlay – Hör dein eigenes Ding.</p>
+    <p>© 2025 EchoPlay – Alle Rechte vorbehalten</p>
     <p>
-      Diese Plattform ist <strong>100 % kostenlos</strong>, werbefrei und verwendet keine Cookies.<br />
-      <a href="impressum.html" target="_blank" rel="noopener">Impressum</a> ·
-      <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutz</a>
-      <a href="info.html">Über EchoPlay</a>
+      <a href="impressum.html" target="_blank">Impressum</a> ·
+      <a href="datenschutz.html" target="_blank">Datenschutz</a> ·
+      <a href="info.html" target="_blank">Über EchoPlay</a>
     </p>
   </footer>
-
-  <script>
-    const validUsers = {
-      "alex": "1234",
-      "gast": "musik"
-    };
-
-    const loginSection = document.getElementById('login-section');
-    const playerContainer = document.querySelector('.player-container');
-    const header = document.querySelector('header');
-    const errorMsg = document.getElementById('error-msg');
-
-    function checkLogin() {
-      const user = document.getElementById("username").value.trim().toLowerCase();
-      const pass = document.getElementById("password").value.trim();
-
-      if (validUsers[user] && validUsers[user] === pass) {
-        // Login erfolgreich: Login ausblenden, Player + Header anzeigen
-        loginSection.style.display = 'none';
-        playerContainer.style.display = 'flex';
-        header.style.display = 'block';
-        errorMsg.textContent = '';
-      } else {
-        errorMsg.textContent = 'Benutzername oder Passwort falsch!';
-      }
-    }
-
-    const audio = document.getElementById("audio");
-    const playPauseBtn = document.getElementById("playPauseBtn");
-    const progressBar = document.getElementById("progressBar");
-    const progressBarContainer = document.getElementById("progressBarContainer");
-    const currentTimeDisplay = document.getElementById("currentTime");
-    const durationDisplay = document.getElementById("duration");
-    const volumeControl = document.getElementById("volumeControl");
-    const repeatBtn = document.getElementById("repeatBtn");
-
-    let isPlaying = false;
-    let isRepeating = false;
-
-    function formatTime(sec) {
-      const minutes = Math.floor(sec / 60);
-      const seconds = Math.floor(sec % 60);
-      return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-    }
-
-    playPauseBtn.addEventListener("click", () => {
-      if (isPlaying) {
-        audio.pause();
-        playPauseBtn.textContent = "▶";
-        playPauseBtn.title = "Abspielen";
-        playPauseBtn.setAttribute("aria-pressed", "false");
-      } else {
-        audio.play();
-        playPauseBtn.textContent = "⏸";
-        playPauseBtn.title = "Pause";
-        playPauseBtn.setAttribute("aria-pressed", "true");
-      }
-      isPlaying = !isPlaying;
-    });
-
-    audio.addEventListener("timeupdate", () => {
-      if (!isNaN(audio.duration)) {
-        const current = audio.currentTime;
-        const duration = audio.duration;
-        const percent = (current / duration) * 100;
-        progressBar.style.width = percent + "%";
-
-        currentTimeDisplay.textContent = formatTime(current);
-        durationDisplay.textContent = formatTime(duration);
-        progressBarContainer.setAttribute("aria-valuenow", Math.floor(percent));
-      }
-    });
-
-    function seek(e) {
-      const rect = progressBarContainer.getBoundingClientRect();
-      const offsetX = e.clientX - rect.left;
-      const width = rect.width;
-      const duration = audio.duration;
-      if (!isNaN(duration)) {
-        const newTime = (offsetX / width) * duration;
-        audio.currentTime = newTime;
-      }
-    }
-
-    progressBarContainer.addEventListener("click", seek);
-
-    volumeControl.addEventListener("input", () => {
-      audio.volume = volumeControl.value;
-    });
-
-    audio.volume = 0.5;
-    volumeControl.value = 0.5;
-
-    repeatBtn.addEventListener("click", () => {
-      isRepeating = !isRepeating;
-      audio.loop = isRepeating;
-      repeatBtn.classList.toggle("active", isRepeating);
-      repeatBtn.title = isRepeating ? "Wiederholen aktiviert" : "Wiederholen deaktiviert";
-    });
-
-    audio.addEventListener("ended", () => {
-      if (!isRepeating) {
-        audio.currentTime = 0;
-        isPlaying = false;
-        playPauseBtn.textContent = "▶";
-        playPauseBtn.title = "Abspielen";
-        playPauseBtn.setAttribute("aria-pressed", "false");
-        progressBar.style.width = "0%";
-        currentTimeDisplay.textContent = "0:00";
-      }
-    });
-  </script>
 </body>
 </html>
-
